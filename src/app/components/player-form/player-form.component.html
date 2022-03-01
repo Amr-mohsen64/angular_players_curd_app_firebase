@@ -1,0 +1,25 @@
+<form #playerForm="ngForm" (ngSubmit)="save(playerForm)" class="mt-4">
+    <div class="form-group">
+        <label for="firstName" class=" mb-2 mt-1">First Name</label>
+        <input #firstNameInput="ngModel" type="text" class="form-control" name="firstName" id="firstName"
+            [(ngModel)]="player.firstName" required
+            [ngClass]="{'is-invalid' :firstNameInput.invalid &&firstNameInput.touched}">
+        <div [hidden]="!firstNameInput.errors?.['required']" class="invalid-feedback">~ first name is required</div>
+    </div>
+    <div class="form-group">
+        <label for="lastName" class=" mb-2 mt-1">Last Name</label>
+        <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="player.lastName" required>
+    </div>
+    <div class="form-group">
+        <label for="country" class=" mb-2 mt-1">Country</label>
+        <input type="text" class="form-control" name="country" id="country" [(ngModel)]="player.country" required>
+    </div>
+    <div class="form-group" class=" mb-2 mt-1">
+        <label for="age" class=" mb-2 mt-1">Age</label>
+        <input type="text" class="form-control" name="age" id="age" [(ngModel)]="player.age" required>
+    </div>
+
+    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-danger" *ngIf="playerId" (click)="delete()">delete</button>
+
+</form>
